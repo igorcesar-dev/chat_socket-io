@@ -11,12 +11,12 @@ app.get("/", (req, res) => {
 
 // EVENTO DE CONEXÃO, "socket" = cliente
 io.on("connection", (socket) => {
-    socket.on("disconnect", () => {
-        console.log("x desconectou: " + socket.id);
-    })
+  socket.on("disconnect", () => {
+    console.log("x desconectou: " + socket.id);
+  });
 
   socket.on("msg", (data) => {
-    socket.emit("showmsg", data);
+    io.emit("showmsg", data);
     console.log(data);
   });
 });
